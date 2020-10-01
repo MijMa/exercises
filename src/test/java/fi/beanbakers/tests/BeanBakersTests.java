@@ -1,5 +1,6 @@
 package fi.beanbakers.tests;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -31,8 +32,14 @@ public class BeanBakersTests {
 	 * @return provided list reversed
 	 */
 	private <T> List<T> doReverseList(List<T> input) {
-		// TODO: Write code!
-		return Collections.emptyList();
+		
+		List<T> uusilista = new ArrayList<T>();
+		//nyt lisää uuteen listaan kääntäen arvot input parametrista
+		for (int i = input.size() ; i != 0; i--) {
+			uusilista.add(input.get(i -1));
+			}
+		System.out.print(uusilista);
+		return uusilista;
 	}
 
 	@Test
@@ -51,8 +58,19 @@ public class BeanBakersTests {
 	 * @return int array containing the calculated fibonacci sequence
 	 */
 	private int[] doFibonacciSequence(int sequenceLength) {
-		// TODO: Write code!
-		return new int[0];
+		
+		int[] loppulista = new int[sequenceLength];
+		int ykkosarvo = 1;
+		int kakkosarvo = 0;
+		
+		for (int i = 0; i < sequenceLength; i++) {
+			loppulista[i] = ykkosarvo + kakkosarvo;
+			ykkosarvo = kakkosarvo;
+			kakkosarvo = loppulista[i];
+		}
+		
+		
+		return loppulista;
 	}
 
 	@Test
@@ -74,8 +92,15 @@ public class BeanBakersTests {
 	 * @return true if provided series ascends, false otherwise.
 	 */
 	private boolean isAscendingSeries(List<Integer> series) {
-		// TODO: Write code!
-		return false;
+		
+		for (int i = 1; i < series.size(); i++) {
+			
+				if (series.get(i - 1) >= series.get(i)) {
+					return false;
+			}
+		}
+		
+		return true;
 	}
 
 	/**
@@ -86,7 +111,14 @@ public class BeanBakersTests {
 	 * @return true if the provided series descends, false otherwise.
 	 */
 	private boolean isDescendingSeries(List<Integer> series) {
-		// TODO: Write code!
-		return false;
+		
+		for (int i = 1; i < series.size(); i++) {
+			
+			if (series.get(i - 1) <= series.get(i)) {
+				return false;
+		}
+		}
+	
+		return true;
 	}
 }
